@@ -1,12 +1,13 @@
-var supertest = require('supertest')
-const request = supertest('http://reqres.in/')
+var supertest = require('supertest');
+const request=supertest('https://reqres.in/')
 
-it('Get All users',()=>{
-    const response = request.get('api/users?page=2')
-    console.log(response.body)
-    expect(response.status).toBe(undefined)
-    jest.setTimeout(() => {
-        
-    }, 70000);
-    
-}) 
+const SECONDS = 1000;
+jest.setTimeout(7 * SECONDS)
+it('Get all users' , async() => {
+
+   
+    const response = await request.get('api/users?page=2');
+    console.log(response.body);
+    expect(response.status).toBe(200);
+
+});
